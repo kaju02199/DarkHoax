@@ -13,6 +13,7 @@ public class SimpleShoot : MonoBehaviour
 
 
     public float shotPower = 100f;
+    public float fireRate = 3;
 
     void Start()
     {
@@ -35,7 +36,10 @@ public class SimpleShoot : MonoBehaviour
         // bullet.GetComponent<Rigidbody>().AddForce(barrelLocation.forward * shotPower);
 
         GameObject tempFlash;
-       Instantiate(bulletPrefab, barrelLocation.position, barrelLocation.rotation).GetComponent<Rigidbody>().AddForce(barrelLocation.forward * shotPower);
+        for (int i = 0; i <= fireRate; i++)
+        {
+            Instantiate(bulletPrefab, barrelLocation.position, barrelLocation.rotation).GetComponent<Rigidbody>().AddForce(barrelLocation.forward * shotPower);
+        }
        tempFlash = Instantiate(muzzleFlashPrefab, barrelLocation.position, barrelLocation.rotation);
 
        // Destroy(tempFlash, 0.5f);
